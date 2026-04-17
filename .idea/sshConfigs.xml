@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="SshConfigs">
+    <configs>
+      <sshConfig authType="PASSWORD" host="v2012.coreserver.jp" id="19eef678-f8ea-4f2b-a8e1-b6d7e2c35be9" port="22" nameFormat="DESCRIPTIVE" username="kumachan2999" useOpenSSHConfig="true" />
+    </configs>
+  </component>
+</project>

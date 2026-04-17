@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Event</title>
+    <!-- Google Fontsを追加してモダンなタイポグラフィへ -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Noto+Sans+JP:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+
+    <!-- スプラッシュスクリーン（ローディング画面） -->
+    <div id="splash-screen" class="splash-screen">
+        <!-- TODO: ここにご用意したロゴ画像を指定してください -->
+        <img src="title.png" alt="Event Logo" class="splash-logo">
+    </div>
+
+    <!-- 上部固定ナビゲーション（タブ） -->
+    <nav class="top-nav" id="top-nav">
+        <ul>
+            <li><a href="#details">About</a></li>
+            <li><a href="#information">Information</a></li>
+            <li><a href="#access">Access</a></li>
+        </ul>
+    </nav>
+
+    <header class="hero">
+    </header>
+
+    <!-- スクロールを促すアイコン / トップへ戻るボタン -->
+    <div class="scroll-indicator" id="scroll-indicator">
+        <span id="scroll-text">Scroll</span>
+    </div>
+
+    <main>
+        <section id="details" class="details-section">
+            <div class="animate-on-scroll fade-up" id="about">
+                <h2>About</h2>
+                <p>本イベントは
+                    <br><h3>「高島市 × 麗澤大学 包括連携協定 記念」</h3>
+                    <br>および
+                    <br><h3>「公益財団法人モラロジー道徳教育財団 創立100周年記念 『つなぐ』プロジェクト」</h3>
+                    <br>の一環として開催するものです。
+                    <br>
+                    <br>
+                        高島出身の
+                    <br>
+                    <img src="ishiguro.jpg" alt="石黒浩教授" class="ishiguro-image" style="width: 200px;">
+                        <h3>世界的ロボット研究者・石黒浩教授</h3>を迎え
+                    <br>
+                        「人間らしさ」「テクノロジー」「地域の未来」をテーマに、
+                    <br>
+                        高島を一つのモデルにしながら、これからの社会のあり方を多角的に考える対話型イベントです。
+                    <br>
+                        高校生・大学生・地域がともに未来を描き、次世代へとつながる新たな学びと対話の場を創出します。</p>
+            </div>
+            
+            <div class="animate-on-scroll fade-up delay-1" id="information">
+                <h2>Information</h2>
+                <ul class="info-list">
+                    <li><span class="label">Date</span> <span class="value">2026年7月20日 (月/祝)</span></li>
+                    <li><span class="label">Time</span> <span class="value">13:30 START</span></li>
+                    <li><span class="label">Venue</span> <span class="value">高島市民会館(滋賀県高島市今津町1-3-1)</span></li>
+                    <li><span class="label">Price</span> <span class="value">無料</span></li>
+                </ul>
+            </div>
+
+            <div class="animate-on-scroll fade-up delay-2" id="access">
+                <h2>Access</h2>
+                <p>近江今津駅より徒歩5分</p>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1822.5608361831605!2d136.03434016064833!3d35.39846869189235!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6001923cca4171c1%3A0x37cd5c8452056a87!2z6auY5bO25biC5rCR5Lya6aSo!5e1!3m2!1sja!2sjp!4v1775724532154!5m2!1sja!2sjp" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Your Company</p>
+    </footer>
+
+</body>
+</html>
