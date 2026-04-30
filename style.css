@@ -235,7 +235,7 @@ a {
     background-color: var(--scroll-btn-bg);
     border: 1px solid var(--accent);
     border-radius: 50px; /* 丸みをつけてボタンらしくする */
-    padding: 12px 130px;
+    padding: 12px 131px;
     color: var(--accent);
     opacity: 0.9;
     gap: 0;
