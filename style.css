@@ -8,6 +8,31 @@
     --accent-glow: rgba(0, 240, 255, 0.6); /* 光彩エフェクト用 */
     --poster-width: 100%; /* ポスターの横幅（ここで調整可能: 例 100%, 800px, contain） */
     --poster-height: auto; /* ポスターの縦幅 */
+
+    /* ヒーローテキストやコンポーネント背景の変数化 */
+    --hero-text-color: #ffffff;
+    --hero-text-shadow: 0 2px 10px rgba(0, 0, 0, 0.9), 0 0 5px #000000, 0 0 15px #000000;
+    --hero-text-shadow-light: 0 2px 10px rgba(0, 0, 0, 0.8), 0 0 5px rgba(0, 0, 0, 0.9);
+    --hero-glitch-shadow: 0 4px 15px rgba(0, 0, 0, 0.8), 0 2px 5px rgba(0, 0, 0, 0.9);
+    --panel-bg: rgba(0, 20, 35, 0.4);
+    --nav-bg: rgba(11, 12, 16, 0.95);
+    --footer-bg: #060608;
+    --scroll-btn-bg: rgba(11, 12, 16, 0.8);
+}
+
+/* --- ライトテーマ設定 --- */
+:root.light-theme {
+    --bg-color: #f7fbff; /* 明るい背景 */
+    --bg-grid: rgba(0, 128, 255, 0.05); /* うっすら青いグリッド */
+    --text-main: #000000; /* 暗い文字 */
+    --text-highlight: #000000; /* より暗い見出し */
+    --accent: #0077aa; /* 落ち着いた青 */
+    --accent-dark: #004466;
+
+    --panel-bg: rgba(255, 255, 255, 0.8);
+    --nav-bg: rgba(255, 255, 255, 0.95);
+    --footer-bg: #e6ebf0;
+    --scroll-btn-bg: rgba(255, 255, 255, 0.9);
 }
 
 html {
@@ -28,6 +53,36 @@ body {
     background-attachment: fixed;
     line-height: 1.8;
     overflow-x: hidden;
+}
+
+/* ==================
+   Theme Toggle Button
+   ================== */
+.theme-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: var(--nav-bg);
+    border: 1px solid var(--event-border);
+    color: var(--text-highlight);
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    z-index: 1000;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+}
+
+.theme-toggle:hover {
+    transform: scale(1.1);
+}
+
+.theme-toggle svg {
+    transition: stroke 0.3s;
 }
 
 /* Typography & Layout */
@@ -73,56 +128,62 @@ h1, h2, h3 {
 /* Glitch Effect on Title / ネオンのグロー */
 .subtitle-top {
     font-size: 36px;
-    color: #ffffff;
+    color: var(--hero-text-color);
     font-family: 'Noto Serif JP', serif;
     letter-spacing: 5px;
     margin-bottom: 0; /* 間隔を狭めるため変更 */
     font-weight: 700;
-    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8), 0 0 5px rgba(0, 0, 0, 0.9);
+    text-shadow: var(--hero-text-shadow-light);
+    transition: color 0.3s, text-shadow 0.3s;
 }
 
 .glitch {
     font-size: 87px;
     margin: 0;
     position: relative;
-    color: #ffffff;
+    color: var(--hero-text-color);
     font-family: 'Noto Sans JP', sans-serif;
     letter-spacing: 10px;
     font-weight: 900;
     line-height: 1.1; /* 余分な空白を削る */
-    text-shadow: 0 4px 15px rgba(0, 0, 0, 0.8), 0 2px 5px rgba(0, 0, 0, 0.9);
+    text-shadow: var(--hero-glitch-shadow);
+    transition: color 0.3s, text-shadow 0.3s;
 }
 
 /* 少しサイバーパンク/デジタルなサブタイトル */
 .subtitle-bottom {
     margin-top: 0.5rem; /* 間隔を狭めるため変更 */
-    color: #ffffff;
+    color: var(--hero-text-color);
     font-weight: 700;
     letter-spacing: 2px;
-    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8), 0 0 5px rgba(0, 0, 0, 0.9);
+    text-shadow: var(--hero-text-shadow-light);
+    transition: color 0.3s, text-shadow 0.3s;
 }
 
 .subtitle-bottom .text-s {
     font-size: 17px;
-    color: #ffffff;
+    color: var(--hero-text-color);
+    transition: color 0.3s;
 }
 
 .subtitle-bottom .text-m {
     font-size: 22px;
-    color: #ffffff;
+    color: var(--hero-text-color);
+    transition: color 0.3s;
 }
 
 /* イベント情報（日時・会場など） */
 .event-info {
     margin-top: 2.5rem;
     padding-top: 1.5rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.3);
+    border-top: 1px solid var(--event-border);
     text-align: left;
     display: inline-block;
-    color: #ffffff;
+    color: var(--hero-text-color);
     font-family: 'Noto Sans JP', sans-serif;
-    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.9), 0 0 5px #000000, 0 0 15px #000000;
+    text-shadow: var(--hero-text-shadow);
     line-height: 1.4;
+    transition: color 0.3s, text-shadow 0.3s, border-color 0.3s;
 }
 
 .event-info p {
@@ -167,7 +228,7 @@ h1, h2, h3 {
 }
 
 .scroll-indicator.is-totop {
-    background-color: rgba(11, 12, 16, 0.8);
+    background-color: var(--scroll-btn-bg);
     border: 1px solid var(--accent);
     border-radius: 50px; /* 丸みをつけてボタンらしくする */
     padding: 12px 20px;
@@ -233,7 +294,7 @@ h2 {
     display: inline-block;
     letter-spacing: 5px;
     text-transform: uppercase;
-    text-shadow: 0 0 15px rgba(0, 240, 255, 0.4); /* 見出しも淡く光る */
+
 }
 
 h2::after {
@@ -252,14 +313,83 @@ h2:hover::after {
     width: 100%;
 }
 
+/* About Section Styles */
+.about-layout {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+    margin-top: 2rem;
+    text-align: left;
+}
+
+.about-image {
+    flex: 0 0 250px; /* 画像エリアの幅を固定 */
+    display: flex;
+    justify-content: center;
+}
+
+.about-text {
+    flex: 1; /* 残りのスペースを利用 */
+}
+
+.about-lead {
+    font-size: 1.2rem;
+    color: var(--text-highlight);
+    margin-bottom: 2rem;
+    transition: color 0.3s;
+    line-height: 1.8;
+}
+
+.about-lead strong {
+    color: var(--accent);
+}
+
+.ishiguro-image {
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid var(--accent);
+    box-shadow: 0 0 20px rgba(0, 240, 255, 0.3);
+}
+
+.speaker-text {
+    text-align: left;
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px dashed rgba(0, 240, 255, 0.2);
+}
+
+.speaker-intro, .speaker-outro {
+    font-size: 1rem;
+    margin: 0;
+    opacity: 0.8;
+}
+
+.speaker-name {
+    font-size: 1.8rem;
+    color: var(--accent);
+    margin: 0.5rem 0;
+    letter-spacing: 2px;
+}
+
+.about-desc {
+    font-size: 1.1rem;
+    color: var(--text-main);
+    transition: color 0.3s;
+    line-height: 1.8;
+}
+
 .info-list {
     list-style: none;
     padding: 2rem;
-    background: rgba(0, 20, 35, 0.4); /* 未来的な暗いパネル */
+    background: var(--panel-bg); /* 未来的な暗いパネル */
     border: 1px solid rgba(0, 240, 255, 0.15); /* ネオン枠 */
     border-radius: 12px;
     backdrop-filter: blur(10px);
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
+    transition: background-color 0.3s;
 }
 
 .info-list li {
@@ -291,10 +421,11 @@ h2:hover::after {
 footer {
     text-align: center;
     padding: 3rem;
-    background-color: #060608;
+    background-color: var(--footer-bg);
     color: var(--text-main);
     font-size: 0.9rem;
     letter-spacing: 2px;
+    transition: background-color 0.3s;
 }
 
 /* ----- Animation Classes (JS triggers these) ----- */
@@ -327,13 +458,13 @@ footer {
     top: 0;
     left: 0;
     width: 100%;
-    background: rgba(11, 12, 16, 0.95);
+    background: var(--nav-bg);
     backdrop-filter: blur(10px);
     z-index: 100;
     padding: 1rem 0;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
     transform: translateY(-100%);
-    transition: transform 0.4s ease;
+    transition: transform 0.4s ease, background-color 0.3s;
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
@@ -384,6 +515,13 @@ footer {
     .event-venue-sub { display: block; margin-top: 0.2rem; font-size: 12px; }
 
     h2 { font-size: 2.2rem; }
+    
+    .about-layout { flex-direction: column; gap: 2rem; }
+    .about-image { flex: 0 0 auto; }
+    .about-lead { font-size: 1.1rem; text-align: left; }
+    .speaker-text { text-align: center; }
+    .speaker-name { font-size: 1.5rem; }
+
     .info-list { padding: 1.5rem 1rem; } /* 余白縮小 */
     .info-list li { flex-direction: column; align-items: flex-start; gap: 0.5rem; padding-left: 0.5rem; }
     .info-list li:hover { padding-left: 1rem; }

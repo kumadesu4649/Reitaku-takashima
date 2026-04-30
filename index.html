@@ -21,6 +21,21 @@
         </ul>
     </nav>
 
+    <!-- 白黒テーマ切り替えボタン -->
+    <button class="theme-toggle" id="theme-toggle" aria-label="テーマ切り替え">
+        <svg id="theme-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+        </svg>
+    </button>
+
     <header class="hero">
         <div class="hero-content">
             <div class="subtitle-top">石黒浩教授とともに考える</div>
@@ -44,23 +59,27 @@
     <main>
         <section id="details" class="details-section">
             <div class="animate-on-scroll fade-up" id="about">
-                <p>
-                    <br><h3>「高島市 × 麗澤大学 包括連携協定 記念」</h3>
-                    <br>および
-                    <br><h3>「公益財団法人モラロジー道徳教育財団 創立100周年記念 『つなぐ』プロジェクト」</h3>
-                    <br>の一環として開催するものです。
-                    <br>
-                    <br>
-                        高島出身の
-                    <br>
-                    <img src="images/ishiguro.jpg" alt="石黒浩教授" class="ishiguro-image" style="width: 200px;">
-                        <h3>世界的ロボット研究者・石黒浩教授</h3>を迎え
-                    <br>
-                        「人間らしさ」「テクノロジー」「地域の未来」をテーマに、
-                    <br>
-                        高島を一つのモデルにしながら、これからの社会のあり方を多角的に考える対話型イベントです。
-                    <br>
-                        高校生・大学生・地域がともに未来を描き、次世代へとつながる新たな学びと対話の場を創出します。</p>
+                <h2>イベント内容</h2>
+                <div class="about-layout">
+                    <div class="about-image">
+                        <img src="images/ishiguro.jpg" alt="石黒浩教授" class="ishiguro-image">
+                    </div>
+                    <div class="about-text">
+                        <p class="about-lead"><strong>高島市と麗澤大学の包括連携協定締結</strong>を記念し、<br>未来を語り合う対話型イベントを開催します。</p>
+                        
+                        <div class="speaker-text">
+                            <p class="speaker-intro">本イベントには、高島市出身で世界的に活躍する</p>
+                            <h3 class="speaker-name">ロボット研究者 石黒浩 教授</h3>
+                            <p class="speaker-outro">が登壇。</p>
+                        </div>
+                        
+                        <p class="about-desc">
+                            「人間らしさ」「テクノロジー」「地域の未来」をテーマに、<br>
+                            高島を一つのモデルにしながら、これからの社会のあり方を多角的に考える対話型イベントです。<br><br>
+                            高校生・大学生・地域がともに未来を描き、<br>次世代へとつながる新たな学びと対話の場を創出します。
+                        </p>
+                    </div>
+                </div>
             </div>
             
             <div class="animate-on-scroll fade-up delay-1" id="information">
