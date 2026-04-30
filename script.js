@@ -1,21 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     
     // --- 設定（ここでスプラッシュ画面の秒数を調整できます） ---
-    // 1500ミリ秒 = 1.5秒
-    const SPLASH_DURATION_MS = 2500;
     // ----------------------------------------------------------
-
-    // スプラッシュスクリーンの処理
-    const splashScreen = document.getElementById('splash-screen');
-    window.addEventListener('load', () => {
-        // 全ての読み込み完了後、設定した時間だけロゴを見せてからフェードアウト
-        if (splashScreen) {
-            setTimeout(() => {
-                splashScreen.classList.add('is-hidden');
-            }, SPLASH_DURATION_MS); 
-        }
-    });
-
     // Intersection Observerによるスクロールアニメーション
     const options = {
         root: null,

@@ -6,9 +6,8 @@
     --accent: #00f0ff; /* ネオンブルー */
     --accent-dark: #0080aa;
     --accent-glow: rgba(0, 240, 255, 0.6); /* 光彩エフェクト用 */
-    --poster-width: 33%; /* ポスターの横幅（ここで調整可能: 例 100%, 800px, contain） */
+    --poster-width: 100%; /* ポスターの横幅（ここで調整可能: 例 100%, 800px, contain） */
     --poster-height: auto; /* ポスターの縦幅 */
-    --splash-logo-width: 1000px; /* スプラッシュ画面のロゴサイズ（ここで調整可能） */
 }
 
 html {
@@ -41,7 +40,7 @@ h1, h2, h3 {
 .hero {
     position: relative;
     height: 100vh;
-    background-image: url(./poster.png); /* ポスター画像 */
+    background-image: url(./images/Poster_222.png); /* ポスター画像 */
     background-size: var(--poster-width) var(--poster-height); /* 上の設定(root)でサイズ変更可能 */
     background-position: center;
     background-repeat: no-repeat; /* 画像の繰り返しを無効化 */
@@ -66,39 +65,86 @@ h1, h2, h3 {
 }
 
 .hero-content {
-    /* グラデーションと光沢を使った未来的なガラスパネル感 */
-    background: rgba(5, 10, 20, 0.4); /* 暗く透明に */
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
     padding: 3rem 6rem;
-    border: 1px solid rgba(0, 240, 255, 0.2); /* ネオンブルーの枠 */
-    border-top: 2px solid rgba(0, 240, 255, 0.5); /* 上部に強い反射 */
-    border-radius: 12px;
-    box-shadow: 0 0 30px rgba(0, 240, 255, 0.1), inset 0 0 20px rgba(0, 240, 255, 0.05); /* 発光効果 */
+    margin-top: 35vh; /* テキスト全体を少しだけ下寄りに配置 */
     z-index: 10;
 }
 
 /* Glitch Effect on Title / ネオンのグロー */
+.subtitle-top {
+    font-size: 36px;
+    color: #ffffff;
+    font-family: 'Noto Serif JP', serif;
+    letter-spacing: 5px;
+    margin-bottom: 0; /* 間隔を狭めるため変更 */
+    font-weight: 700;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8), 0 0 5px rgba(0, 0, 0, 0.9);
+}
+
 .glitch {
-    font-size: 5.5rem;
+    font-size: 87px;
+    margin: 0;
     position: relative;
-    color: var(--text-highlight);
+    color: #ffffff;
+    font-family: 'Noto Sans JP', sans-serif;
     letter-spacing: 10px;
-    text-transform: uppercase;
-    text-shadow: 
-        0 0 5px var(--text-highlight),
-        0 0 20px var(--accent),
-        0 0 40px var(--accent); /* 強く発光させる */
+    font-weight: 900;
+    line-height: 1.1; /* 余分な空白を削る */
+    text-shadow: 0 4px 15px rgba(0, 0, 0, 0.8), 0 2px 5px rgba(0, 0, 0, 0.9);
 }
 
 /* 少しサイバーパンク/デジタルなサブタイトル */
-.subtitle {
-    font-size: 1.3rem;
-    color: var(--accent);
-    letter-spacing: 8px;
-    margin-top: 1rem;
-    font-weight: 400;
-    text-shadow: 0 0 8px rgba(0, 240, 255, 0.8);
+.subtitle-bottom {
+    margin-top: 0.5rem; /* 間隔を狭めるため変更 */
+    color: #ffffff;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8), 0 0 5px rgba(0, 0, 0, 0.9);
+}
+
+.subtitle-bottom .text-s {
+    font-size: 17px;
+    color: #ffffff;
+}
+
+.subtitle-bottom .text-m {
+    font-size: 22px;
+    color: #ffffff;
+}
+
+/* イベント情報（日時・会場など） */
+.event-info {
+    margin-top: 2.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+    text-align: left;
+    display: inline-block;
+    color: #ffffff;
+    font-family: 'Noto Sans JP', sans-serif;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.9), 0 0 5px #000000, 0 0 15px #000000;
+    line-height: 1.4;
+}
+
+.event-info p {
+    margin: 0 0 10px 0;
+    font-size: 16px;
+    letter-spacing: 1px;
+}
+
+.event-info strong {
+    color: var(--accent); /* タイトル部分をネオンブルーに */
+}
+
+.event-time-sub {
+    font-size: 13px;
+    display: inline-block;
+    margin-left: 4.5em; /* 日時の後に合わせるためのインデント */
+    opacity: 0.9;
+}
+
+.event-venue-sub {
+    font-size: 14px;
+    opacity: 0.9;
 }
 
 /* Scroll indicator / Back to Top button */
@@ -275,44 +321,6 @@ footer {
 .delay-1 { transition-delay: 0.2s; }
 .delay-2 { transition-delay: 0.4s; }
 
-/* ----- Splash Screen ----- */
-.splash-screen {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: var(--bg-color); /* サイバーな黒背景色に合わせる */
-    background-image: 
-        linear-gradient(var(--bg-grid) 1px, transparent 1px),
-        linear-gradient(90deg, var(--bg-grid) 1px, transparent 1px);
-    background-size: 40px 40px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 9999; /* 画面の最前面に配置 */
-    transition: opacity 0.8s ease, visibility 0.8s ease;
-}
-
-.splash-screen.is-hidden {
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none; /* クリックできないようにする */
-}
-
-/* スプラッシュ画面のロゴ（未来的な脈打ち発光効果付き） */
-.splash-logo {
-    width: var(--splash-logo-width); /* 上部の:rootでサイズを調整可能 */
-    max-width: 85vw; /* スマホなどで画面幅を突き抜けないように上限(85%)を設定 */
-    object-fit: contain;
-    animation: splashPulse 1.2s infinite alternate ease-in-out;
-}
-
-@keyframes splashPulse {
-    0% { transform: scale(0.95); opacity: 0.8; filter: drop-shadow(0 0 5px var(--accent)); }
-    100% { transform: scale(1.05); opacity: 1; filter: drop-shadow(0 0 25px var(--accent)); }
-}
-
 /* ----- Top Navigation (Tabs) ----- */
 .top-nav {
     position: fixed;
@@ -361,11 +369,20 @@ footer {
 /* Responsive adjustments */
 @media (max-width: 768px) {
     :root {
-        --poster-width: 90%; /* スマホなどの画面幅ではポスターを大きく表示 */
+        --poster-width: 300%; /* スマホなどの画面幅ではポスターを大きく表示 */
     }
-    .hero-content { padding: 3rem 2rem; } /* スマホでも見出しをしっかり */
-    .glitch { font-size: 3rem; letter-spacing: 5px; }
-    .subtitle { font-size: 1rem; letter-spacing: 3px; }
+    .hero-content { padding: 2rem 1rem; } 
+    .subtitle-top { font-size: 18px; letter-spacing: 2px; margin-bottom: 0; }
+    .glitch { font-size: 42px; letter-spacing: 3px; margin: 0; line-height: 1.1; }
+    .subtitle-bottom { margin-top: 0.2rem; }
+    .subtitle-bottom .text-s { font-size: 12px; }
+    .subtitle-bottom .text-m { font-size: 16px; }
+    
+    .event-info { margin-top: 1.5rem; padding-top: 1rem; width: 100%; }
+    .event-info p { font-size: 14px; text-align: left; }
+    .event-time-sub { margin-left: 0; font-size: 12px; }
+    .event-venue-sub { display: block; margin-top: 0.2rem; font-size: 12px; }
+
     h2 { font-size: 2.2rem; }
     .info-list { padding: 1.5rem 1rem; } /* 余白縮小 */
     .info-list li { flex-direction: column; align-items: flex-start; gap: 0.5rem; padding-left: 0.5rem; }

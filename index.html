@@ -5,17 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>私たちの未来/Event</title>
     <!-- Google Fontsを追加してモダンなタイポグラフィへ -->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Noto+Sans+JP:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Noto+Sans+JP:wght@300;400;700;900&family=Noto+Serif+JP:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
 </head>
 <body>
-
-    <!-- スプラッシュスクリーン（ローディング画面） -->
-    <div id="splash-screen" class="splash-screen">
-        <!-- TODO: ここにご用意したロゴ画像を指定してください -->
-        <img src="title.png" alt="Event Logo" class="splash-logo">
-    </div>
 
     <!-- 上部固定ナビゲーション（タブ） -->
     <nav class="top-nav" id="top-nav">
@@ -23,10 +17,23 @@
             <li><a href="#details">About</a></li>
             <li><a href="#information">Information</a></li>
             <li><a href="#access">Access</a></li>
+            <li><a href="#contact">Contact</a></li>
         </ul>
     </nav>
 
     <header class="hero">
+        <div class="hero-content">
+            <div class="subtitle-top">石黒浩教授とともに考える</div>
+            <h1 class="glitch">私たちの未来</h1>
+            <div class="subtitle-bottom">
+                <span class="text-s">50年後の未来は、</span><span class="text-m">「どこか」</span><span class="text-s">ではなく、</span><span class="text-m">「ここ」</span><span class="text-s">から始まる</span>
+            </div>
+            <div class="event-info">
+                <p><strong>日時</strong>：2026年7月30日（月祝）13:30～15:00<br>
+                <span class="event-time-sub">受付開始 12:00、　開場 12:30</span></p>
+                <p><strong>会場</strong>：高島市民会館<span class="event-venue-sub">（滋賀県高島市今津町1-3-1）</span></p>
+            </div>
+        </div>
     </header>
 
     <!-- スクロールを促すアイコン / トップへ戻るボタン -->
@@ -37,8 +44,7 @@
     <main>
         <section id="details" class="details-section">
             <div class="animate-on-scroll fade-up" id="about">
-                <h2>About</h2>
-                <p>本イベントは
+                <p>
                     <br><h3>「高島市 × 麗澤大学 包括連携協定 記念」</h3>
                     <br>および
                     <br><h3>「公益財団法人モラロジー道徳教育財団 創立100周年記念 『つなぐ』プロジェクト」</h3>
@@ -47,7 +53,7 @@
                     <br>
                         高島出身の
                     <br>
-                    <img src="ishiguro.jpg" alt="石黒浩教授" class="ishiguro-image" style="width: 200px;">
+                    <img src="images/ishiguro.jpg" alt="石黒浩教授" class="ishiguro-image" style="width: 200px;">
                         <h3>世界的ロボット研究者・石黒浩教授</h3>を迎え
                     <br>
                         「人間らしさ」「テクノロジー」「地域の未来」をテーマに、
