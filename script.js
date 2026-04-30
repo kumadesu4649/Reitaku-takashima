@@ -58,11 +58,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // パララックス風スクロール効果の追加
     window.addEventListener('scroll', () => {
         const scrolled = window.scrollY;
-        const heroContent = document.querySelector('.hero-content');
-        if (heroContent) {
-            heroContent.style.transform = `translateY(${scrolled * 0.4}px)`;
-            heroContent.style.opacity = 1 - (scrolled / 500);
-        }
         
         // スクロール時に上部タブナビゲーションを表示
         const topNav = document.getElementById('top-nav');

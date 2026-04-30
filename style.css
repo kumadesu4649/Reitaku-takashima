@@ -95,7 +95,7 @@ h1, h2, h3 {
 .hero {
     position: relative;
     height: 100vh;
-    background-image: url(./images/Poster_222.png); /* ポスター画像 */
+    background-image: url(./images/Poster_CL.jpg); /* ポスター画像 */
     background-size: var(--poster-width) var(--poster-height); /* 上の設定(root)でサイズ変更可能 */
     background-position: center;
     background-repeat: no-repeat; /* 画像の繰り返しを無効化 */
