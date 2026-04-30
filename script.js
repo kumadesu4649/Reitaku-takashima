@@ -1,5 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
     
+
+    document.documentElement.classList.add("light-theme");
+
     // --- 白黒テーマ切り替え機能 ---
     const themeBtn = document.getElementById('theme-toggle');
     const themeIcon = document.getElementById('theme-icon');
@@ -75,35 +78,31 @@ document.addEventListener('DOMContentLoaded', () => {
         const scrollTextObj = document.getElementById('scroll-text');
         
         if (scrollIndicatorObj && scrollTextObj) {
-            if (scrolled > window.innerHeight * 0.3) {
+            if (scrolled < window.innerHeight * 999) {
                 // 画面の30%以上スクロールした場合、TOPボタンに変化
                 scrollIndicatorObj.classList.add('is-totop');
-                scrollTextObj.innerHTML = '↑ Top'; // 矢印を追加してわかりやすく
+                scrollTextObj.innerHTML = 'お申し込み'; // 矢印を追加してわかりやすく
             } else {
                 // 上部に戻ってきたら元のScrollに戻す
                 scrollIndicatorObj.classList.remove('is-totop');
-                scrollTextObj.innerText = 'Scroll';
+                scrollTextObj.innerText = 'お申し込み';
             }
         }
     });
 
     // スクロールインジケーターのクリックイベント
-    const scrollerBtn = document.getElementById('scroll-indicator');
-    if (scrollerBtn) {
-        scrollerBtn.addEventListener('click', () => {
-            if (scrollerBtn.classList.contains('is-totop')) {
-                // 「TOP」状態の時は一番上へスクロールさせる
-                window.scrollTo({
-                    top: 0,
-                    behavior: 'smooth'
-                });
-            } else {
-                // 「Scroll」状態の時は少し下（約1ページ分）にスクロールさせる
-                window.scrollBy({
-                    top: window.innerHeight * 0.8,
-                    behavior: 'smooth'
-                });
-            }
-        });
-    }
+        const scrollerBtn = document.getElementById('scroll-indicator');
+
+        if (scrollerBtn) {
+            scrollerBtn.addEventListener('click', () => {
+
+                const target = document.getElementById('registration');
+
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        }
 });

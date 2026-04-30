@@ -36,7 +36,7 @@
 }
 
 html {
-    width: 100vw;
+    width: 100%;
     overflow-x: hidden; /* スマホで横揺れ（横スクロール）するのを防ぐ */
 }
 
@@ -235,13 +235,18 @@ a {
     background-color: var(--scroll-btn-bg);
     border: 1px solid var(--accent);
     border-radius: 50px; /* 丸みをつけてボタンらしくする */
-    padding: 12px 20px;
+    padding: 12px 130px;
     color: var(--accent);
     opacity: 0.9;
     gap: 0;
     font-weight: 700;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* 浮いているような影 */
 }
+
+.scroll-indicator:focus {
+    outline: none;
+}
+
 
 .scroll-indicator.is-totop:hover {
     background-color: var(--accent);
@@ -314,6 +319,8 @@ h2 {
     letter-spacing: 5px;
     text-transform: uppercase;
 }
+
+
 
 h2::after {
     content: '';
@@ -714,6 +721,11 @@ footer {
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
+.top-nav img {
+    width: 200px;
+    height: 70px;
+}
+
 .top-nav.is-scrolled {
     transform: translateY(0); /* スクロールすると上部から降りてくる */
 }
@@ -723,6 +735,7 @@ footer {
     margin: 0;
     padding: 0;
     display: flex;
+    align-items: center;
     justify-content: center;
     gap: 3rem;
 }
@@ -743,24 +756,6 @@ footer {
     border-bottom: 2px solid var(--accent); /* ホバー時にタブっぽい下線が付く */
 }
 
-/* ===== ハンバーガーメニュー ===== */
-.hamburger {
-    display: none;
-    position: fixed;
-    top: 20px;
-    left: 20px;
-    z-index: 1100;
-    cursor: pointer;
-}
-
-.hamburger span {
-    display: block;
-    width: 26px;
-    height: 3px;
-    background: var(--text-highlight);
-    margin: 6px 0;
-    transition: 0.3s;
-}
 
 /* スマホ用 */
 @media (max-width: 768px) {
@@ -780,11 +775,13 @@ footer {
         transform: translateY(-100%);
         opacity: 0;
         transition: 0.3s;
+        pointer-events: none; /* 非表示のときはクリックを無効化 */
     }
 
     .top-nav.active {
         transform: translateY(0);
         opacity: 1;
+        pointer-events: auto; /* 表示のときはクリックを有効化 */
     }
 
     .top-nav ul {
@@ -796,7 +793,14 @@ footer {
     .top-nav ul li a {
         font-size: 1.5rem;   /* 見やすく */
     }
+    .apply-btn {
+        right: 20px;
+        bottom: 90px; /* 少し近づける */
+        padding: 10px 14px;
+        font-size: 0.9rem;
+    }
 }
+
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
