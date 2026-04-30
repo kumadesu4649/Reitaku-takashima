@@ -320,7 +320,7 @@ h2:hover::after {
 /* About Section Styles */
 .about-layout {
     display: flex;
-    align-items: center; /* flex-start に変更することで画像が縦中央にならず上に固定され動かなくなる */
+    align-items: flex-start; /* 縦中央(center)だと展開時に画像が動くため、上揃えに固定する */
     justify-content: center;
     gap: 3rem;
     margin-top: 2rem;
@@ -331,6 +331,7 @@ h2:hover::after {
     flex: 0 0 250px; /* 画像エリアの幅を固定 */
     display: flex;
     justify-content: center;
+    margin-top: 5rem; /* テキスト全体の「中央付近」に見える位置まで、固定の余白で押し下げる */
 }
 
 .about-text {
@@ -583,7 +584,7 @@ footer {
     h2 { font-size: 2.2rem; }
     
     .about-layout { flex-direction: column; gap: 2rem; }
-    .about-image { flex: 0 0 auto; }
+    .about-image { flex: 0 0 auto; margin-top: 0; }
     .about-lead { font-size: 1.1rem; text-align: left; }
     .speaker-text { text-align: center; }
     .speaker-name { font-size: 1.5rem; }
