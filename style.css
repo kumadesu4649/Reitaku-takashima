@@ -286,9 +286,24 @@ main {
 }
 
 /* 画像やiframe(Googleマップなど)がスマホの横幅をはみ出すのを防ぐ */
-img, iframe {
+img {
     max-width: 100%;
     height: auto;
+}
+
+/* デフォルト（スマホ） */
+iframe {
+    max-width: 600px;
+    height: 400px;
+    width: 100%;
+}
+
+/* PC用（画面幅が768px以上など） */
+@media (min-width: 768px) {
+    iframe {
+        max-width: 500px;
+        height: 500px;
+    }
 }
 
 h2 {
@@ -298,7 +313,6 @@ h2 {
     display: inline-block;
     letter-spacing: 5px;
     text-transform: uppercase;
-
 }
 
 h2::after {
@@ -448,6 +462,62 @@ h2:hover::after {
     line-height: 1.8;
 }
 
+/* Program Section Styles */
+.program-list {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+}
+
+.program-item {
+    display: flex;
+    flex-wrap: wrap;
+    background: var(--panel-bg);
+    border-left: 4px solid var(--accent);
+    padding: 1.5rem;
+    border-radius: 0 8px 8px 0;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.program-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 15px rgba(0, 240, 255, 0.1);
+}
+
+.program-time {
+    font-weight: 700;
+    color: var(--accent);
+    font-size: 1.2rem;
+    width: 140px;
+    flex-shrink: 0;
+    margin-bottom: 1rem;
+}
+
+.program-content {
+    flex-grow: 1;
+    color: var(--text-main);
+    line-height: 1.6;
+}
+
+.program-content p {
+    margin-top: 0;
+    margin-bottom: 1.2rem;
+}
+
+.program-content p:last-child {
+    margin-bottom: 0;
+}
+
+.program-content strong {
+    color: var(--text-highlight);
+    font-size: 1.1rem;
+}
+
 .info-list {
     list-style: none;
     padding: 2rem;
@@ -483,6 +553,115 @@ h2:hover::after {
 .info-list .value {
     font-size: 1.1rem;
     word-break: break-word; /* 長いテキスト(URLなど)が枠をはみ出すのを防ぐ */
+}
+
+/* Registration Section Styles */
+.registration-content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.registration-period {
+    font-size: 1.2rem;
+    color: var(--accent);
+    margin-bottom: 1rem;
+}
+
+.registration-desc {
+    margin-bottom: 2rem;
+    line-height: 1.6;
+}
+
+.registration-methods {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.registration-method {
+    flex: 1;
+    background: var(--panel-bg);
+    padding: 2rem;
+    border-radius: 8px;
+    border-top: 4px solid var(--accent);
+    text-align: center;
+}
+
+.registration-method h3 {
+    margin-top: 0;
+    color: var(--text-main);
+    font-size: 1.3rem;
+}
+
+.registration-method p {
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+}
+
+.btn-primary, .btn-secondary {
+    display: inline-block;
+    padding: 0.8rem 1.5rem;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.3s;
+}
+
+.btn-primary {
+    background: var(--accent);
+    color: var(--bg-color);
+}
+
+.btn-primary:hover {
+    background: #fff;
+    color: var(--bg-color);
+}
+
+.btn-secondary {
+    background: transparent;
+    border: 1px solid var(--text-main);
+    color: var(--text-main);
+}
+
+.btn-secondary:hover {
+    background: var(--text-main);
+    color: var(--bg-color);
+}
+
+.registration-notes {
+    background: rgba(0, 0, 0, 0.2);
+    padding: 1.5rem;
+    border-radius: 8px;
+    font-size: 0.9rem;
+}
+
+.light-theme .registration-notes {
+    background: rgba(0, 0, 0, 0.05);
+}
+
+.registration-notes h3 {
+    margin-top: 0;
+    font-size: 1.1rem;
+    border-bottom: 1px solid var(--accent);
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.registration-notes h3 span {
+    font-size: 0.8rem;
+    color: #ff6b6b;
+    font-weight: normal;
+}
+
+.registration-notes ul {
+    margin: 0;
+    padding-left: 1.5rem;
+}
+
+.registration-notes li {
+    margin-bottom: 0.5rem;
+    line-height: 1.6;
 }
 
 footer {
@@ -564,6 +743,61 @@ footer {
     border-bottom: 2px solid var(--accent); /* ホバー時にタブっぽい下線が付く */
 }
 
+/* ===== ハンバーガーメニュー ===== */
+.hamburger {
+    display: none;
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 1100;
+    cursor: pointer;
+}
+
+.hamburger span {
+    display: block;
+    width: 26px;
+    height: 3px;
+    background: var(--text-highlight);
+    margin: 6px 0;
+    transition: 0.3s;
+}
+
+/* スマホ用 */
+@media (max-width: 768px) {
+
+    .top-nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;          /* ← これ重要 */
+        height: 100vh;        /* ← 画面いっぱい */
+        background: var(--nav-bg);
+        
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        transform: translateY(-100%);
+        opacity: 0;
+        transition: 0.3s;
+    }
+
+    .top-nav.active {
+        transform: translateY(0);
+        opacity: 1;
+    }
+
+    .top-nav ul {
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
+    }
+
+    .top-nav ul li a {
+        font-size: 1.5rem;   /* 見やすく */
+    }
+}
+
 /* Responsive adjustments */
 @media (max-width: 768px) {
     :root {
@@ -576,24 +810,39 @@ footer {
     .subtitle-bottom .text-s { font-size: 12px; }
     .subtitle-bottom .text-m { font-size: 16px; }
     
-    .event-info { margin-top: 1.5rem; padding-top: 1rem; width: 100%; }
-    .event-info p { font-size: 14px; text-align: left; }
-    .event-time-sub { margin-left: 0; font-size: 12px; }
+    .event-info { margin-top: 1.5rem; padding-top: 1rem; width: 100%; text-align: center; }
+    .event-info p { font-size: 14px; text-align: center; }
+    .event-time-sub { margin-left: 0; font-size: 12px; display: block; }
     .event-venue-sub { display: block; margin-top: 0.2rem; font-size: 12px; }
+
+    main { padding: 4rem 1rem; }
+    .details-section { text-align: center; }
 
     h2 { font-size: 2.2rem; }
     
-    .about-layout { flex-direction: column; gap: 2rem; }
-    .about-image { flex: 0 0 auto; margin-top: 0; }
-    .about-lead { font-size: 1.1rem; text-align: left; }
-    .speaker-text { text-align: center; }
+    .about-layout { flex-direction: column; gap: 2rem; align-items: center; text-align: center; }
+    .about-image { flex: 0 0 auto; margin-top: 0; order: 2; margin-bottom: -1rem; }
+    .about-text { display: contents; }
+    .about-lead { font-size: 1.1rem; text-align: center; order: 1; }
+    .speaker-text { text-align: center; order: 3; }
+    .about-desc { text-align: center; order: 4; }
     .speaker-name { font-size: 1.5rem; }
+    .speaker-details { text-align: center; }
+    .speaker-bio { text-align: left; }
 
-    .info-list { padding: 1.5rem 1rem; } /* 余白縮小 */
-    .info-list li { flex-direction: column; align-items: flex-start; gap: 0.5rem; padding-left: 0.5rem; }
-    .info-list li:hover { padding-left: 1rem; }
-    .info-list .label { width: 100%; color: var(--accent); }
-    .top-nav ul { gap: 1.5rem; }
+    .program-item { flex-direction: column; padding: 1rem; align-items: center; text-align: center; }
+    .program-time { width: auto; margin-bottom: 0.5rem; }
+    .program-content { width: 100%; }
+
+    .registration-methods { flex-direction: column; gap: 1rem; }
+    .registration-notes ul { padding-left: 1rem; }
+
+    .info-list { padding: 1.5rem 1rem; text-align: center; } /* 余白縮小 */
+    .info-list li { flex-direction: column; align-items: center; gap: 0.5rem; padding-left: 0; }
+    .info-list li:hover { padding-left: 0; }
+    .info-list .label { width: auto; color: var(--accent); }
+    
+    .top-nav ul { gap: 0.3rem; }
     .top-nav ul li a { font-size: 0.9rem; }
     .scroll-indicator { right: 20px; }
 }

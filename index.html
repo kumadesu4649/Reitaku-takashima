@@ -11,11 +11,18 @@
 </head>
 <body>
 
+    <div class="hamburger" id="hamburger">
+    <span></span>
+    <span></span>
+    <span></span>
+    </div>
+
     <!-- 上部固定ナビゲーション（タブ） -->
     <nav class="top-nav" id="top-nav">
         <ul>
             <li><a href="#details">About</a></li>
-            <li><a href="#information">Information</a></li>
+            <li><a href="#program">Program</a></li>
+            <li><a href="#registration">Registration</a></li>
             <li><a href="#access">Access</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
@@ -44,7 +51,7 @@
                 <span class="text-s">50年後の未来は、</span><span class="text-m">「どこか」</span><span class="text-s">ではなく、</span><span class="text-m">「ここ」</span><span class="text-s">から始まる</span>
             </div>
             <div class="event-info">
-                <p><strong>日時</strong>：2026年7月20日（月祝）13:30～15:00<br>
+                <p><strong>日時</strong>：2026年7月30日（月祝）13:30～15:00<br>
                 <span class="event-time-sub">受付開始 12:00、　開場 12:30</span></p>
                 <p><strong>会場</strong>：高島市民会館<span class="event-venue-sub">（滋賀県高島市今津町1-3-1）</span></p>
             </div>
@@ -76,11 +83,20 @@
                                 <summary>経歴を見る</summary>
                                 <div class="speaker-bio">
                                     <p>
-                                        1962年滋賀県高島市生まれ。<br>
-                                        大阪大学基礎工学研究科教授（栄誉教授）、ATR石黒浩特別研究所客員所長などを務める。<br>
-                                        人間酷似型ロボット（ジェミノイド）など、多数のロボットを開発。<br>
-                                        最新のロボット研究を通じて「人間とは何か」を探求し続けている。<br>
-                                        2025年大阪・関西万博ではテーマ事業プロデューサーとしてパビリオンを手掛ける。
+                                        石黒浩／いしぐろひろし（ロボット学者），滋賀県生まれ<br>
+                                        大阪大学大学院基礎工学研究科教授（大阪大学栄誉教授）
+                                        <br>ATR石黒浩特別研究所客員所長（ATRフェロー）
+                                        <br>ムーンショット型研究開発制度プロジェクトマネージャー
+                                        <br>大阪関西万博EXPO2025テーマ事業プロデューサー
+                                        <br>AVITA株式会社CEO代表取締役
+                                        <br>遠隔操作ロボット（アバター）や知能ロボットの研究開発に従事
+                                        <br>人間酷似型ロボット（アンドロイド）研究の第一人者．
+                                        <br>
+                                        <br>2011年：大阪文化賞受賞
+                                        <br>2015年：文部科学大臣表彰受賞およびシェイク・ムハンマド・ビン・ラーシド・アール・マクトゥーム知識賞受賞
+                                        <br>2020年：立石賞受賞
+                                        <br>2023年：市村学術賞功績賞受賞麗澤大学特別招聘教授
+                                        
                                     </p>
                                 </div>
                             </details>
@@ -94,21 +110,76 @@
                     </div>
                 </div>
             </div>
+
+            <div class="animate-on-scroll fade-up delay-1" id="program">
+                <h2>プログラム</h2>
+                <div class="program-list">
+                    <div class="program-item">
+                        <div class="program-time">13:30～15:00</div>
+                        <div class="program-content">
+                            <p><strong>●石黒浩教授によるトーク</strong><br>　テーマ「いのちの未来」</p>
+                            <p><strong>●中高大生プレゼンテーション</strong><br>　テーマ「50年後の地域未来」</p>
+                            <p><strong>●パネルトーク</strong><br>　パネリスト：石黒浩教授、今城克啓 高島市長、高島市高校生、麗澤大学生<br>　モデレーター：黒須里美（麗澤大学）</p>
+                        </div>
+                    </div>
+                    <div class="program-item">
+                        <div class="program-time">12:00～15:30</div>
+                        <div class="program-content">
+                            <p><strong>●ロビーイベント</strong><br>　対話型ロボットの展示・体験<br>　お子様も一緒にご参加いただけます。<br>　<span class="program-note" style="font-size:0.85em; opacity:0.8;">（補足：完全撤収17時。片づけが間に合うなら、16時ごろまで展示可能）</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
             
-            <div class="animate-on-scroll fade-up delay-1" id="information">
-                <h2>Information</h2>
-                <ul class="info-list">
-                    <li><span class="label">Date</span> <span class="value">2026年7月20日 (月/祝)</span></li>
-                    <li><span class="label">Time</span> <span class="value">13:30 START</span></li>
-                    <li><span class="label">Venue</span> <span class="value">高島市民会館(滋賀県高島市今津町1-3-1)</span></li>
-                    <li><span class="label">Price</span> <span class="value">無料</span></li>
-                </ul>
+
+            
+            <div class="animate-on-scroll fade-up delay-1" id="registration">
+                <h2>お申し込み</h2>
+                <div class="registration-content">
+                    <p class="registration-period"><strong>申込期間：</strong>6月1日（月）～ 7月10日（金）</p>
+                    <p class="registration-desc">定員は650名（先着順）です。お申込みが定員に達した場合は、受付を締め切らせていただきますので、お早めにお申込みください。</p>
+                    
+                    <div class="registration-methods">
+                        <div class="registration-method">
+                            <h3>WEBからのお申込み</h3>
+                            <p>申込みフォーム（作成中）よりお申込みください。</p>
+                                <div style="margin-top: 1rem;">
+                                <img src="images/QR.png" alt="申込みフォーム用QRコード" style="width: 120px; height: 120px; border-radius: 4px; background: white; padding: 5px;">
+                            </div>
+                            <a href="https://forms.gle/goEA3V5ZkRw1nxwi6" target="_blank" rel="noopener noreferrer" class="btn-primary">申込みフォームへ</a>
+                        </div>
+                        <div class="registration-method">
+                            <h3>FAXでのお申込み</h3>
+                            <p>FAX用紙（作成中）をダウンロードしてご利用ください。<br>※A4サイズ</p>
+                            <a href="#" target="_blank" rel="noopener noreferrer" class="btn-secondary">FAX用紙ダウンロード</a>
+                        </div>
+                    </div>
+
+                    <div class="registration-notes">
+                        <h3>注意事項 <span>※必ずお読みください</span></h3>
+                        <ul>
+                            <li><strong>会場内での写真撮影、動画撮影および録音はご遠慮ください。</strong></li>
+                            <li>本イベントでは、記録、広報および学生の事後学習を目的として、
+                            <br><strong>主催者による写真および動画の撮影を行います。</strong>
+                            <br>撮影した写真・映像は、主催者の広報媒体（ホームページ、SNS、刊行物等）への掲載・使用ならびに学生の事後学習等に活用させていただく場合がございます。 参加申し込みをもって、上記内容についてご同意いただいたものとさせていただきます。 何卒ご理解とご協力を賜りますようお願いいたします。</li>
+                            <li>ご記入いただいた個人情報は、<br><strong>本イベントの運営（参加者管理、連絡等）の目的にのみ使用し、主催者において適切に管理いたします。</strong>
+                            <br>法令に基づく場合を除き、ご本人の同意なく第三者に提供することはありません。</li>
+                            <li>荒天によりイベントを中止、又は内容を変更する場合があります。</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
 
+            
             <div class="animate-on-scroll fade-up delay-2" id="access">
-                <h2>Access</h2>
-                <p>近江今津駅より徒歩5分</p>
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1822.5608361831605!2d136.03434016064833!3d35.39846869189235!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6001923cca4171c1%3A0x37cd5c8452056a87!2z6auY5bO25biC5rCR5Lya6aSo!5e1!3m2!1sja!2sjp!4v1775724532154!5m2!1sja!2sjp" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <h2>アクセス</h2>
+                <h1>会場：高島市民会館</h1>
+                住所：滋賀県高島市今津町1-3-1
+                <br><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1822.5608361831605!2d136.03434016064833!3d35.39846869189235!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6001923cca4171c1%3A0x37cd5c8452056a87!2z6auY5bO25biC5rCR5Lya6aSo!5e1!3m2!1sja!2sjp!4v1775724532154!5m2!1sja!2sjp" width="400" height="500" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <p><strong>【お車でお越しの場合】</strong></p>
+                <p>駐車場普通車 100 台</p>
+                <p><strong>【公共交通機関をご利用の場合】</strong></p>
+                <p>JR湖西線 近江今津駅より徒歩5分</p>
                 </div>
         </section>
     </main>
