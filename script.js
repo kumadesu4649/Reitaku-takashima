@@ -35,6 +35,40 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // --- ハンバーガーメニュー（ARIA対応） ---
+    const hamburger = document.getElementById('hamburger');
+    const topNav = document.getElementById('top-nav');
+    if (hamburger && topNav) {
+        // 初期ARIA状態
+        hamburger.setAttribute('aria-expanded', 'false');
+        topNav.setAttribute('aria-hidden', 'true');
+
+        const toggleNav = () => {
+            const isActive = topNav.classList.toggle('active');
+            hamburger.classList.toggle('active');
+            hamburger.setAttribute('aria-expanded', isActive ? 'true' : 'false');
+            topNav.setAttribute('aria-hidden', isActive ? 'false' : 'true');
+        };
+
+        hamburger.addEventListener('click', toggleNav);
+        hamburger.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                toggleNav();
+            }
+        });
+
+        // ナビリンククリック時に自動で閉じる
+        topNav.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                topNav.classList.remove('active');
+                hamburger.classList.remove('active');
+                hamburger.setAttribute('aria-expanded', 'false');
+                topNav.setAttribute('aria-hidden', 'true');
+            });
+        });
+    }
+
     // --- 設定（ここでスプラッシュ画面の秒数を調整できます） ---
     // ----------------------------------------------------------
     // Intersection Observerによるスクロールアニメーション
