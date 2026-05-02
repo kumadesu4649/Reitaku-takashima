@@ -1,0 +1,910 @@
+/* =====================
+   Hamburger Menu Styles
+   ===================== */
+.hamburger {
+    display: none;
+    position: fixed;
+    top: 1.2rem;
+    left: 1.2rem;
+    z-index: 200;
+    width: 48px;
+    height: 48px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: var(--accent);
+    cursor: pointer;
+    background: rgba(0,0,0,0.05);
+    border-radius: 8px;
+    transition: background 0.2s, opacity 0.3s, visibility 0.3s;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+.hamburger.is-scrolled {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+.hamburger span {
+    display: none;
+}
+.hamburger .hamburger-icon {
+    display: block;
+}
+.hamburger .close-icon {
+    display: none;
+}
+.hamburger.active .hamburger-icon {
+    display: none;
+}
+.hamburger.active .close-icon {
+    display: block;
+}
+
+@media (max-width: 768px) {
+    .hamburger {
+        display: flex;
+    }
+    .top-nav {
+        top: 0;
+    }
+}
+
+@media (min-width: 769px) {
+    .hamburger {
+        display: none !important;
+    }
+}
+:root {
+    --bg-color: #04050a; /* より深い宇宙/サイバー空間の黒 */
+    --bg-grid: rgba(0, 240, 255, 0.03); /* サイバーなグリッド線 */
+    --text-main: #b8c6dc;
+    --text-highlight: #ffffff;
+    --accent: #00f0ff; /* ネオンブルー */
+    --accent-dark: #0080aa;
+    --accent-glow: rgba(0, 240, 255, 0.6); /* 光彩エフェクト用 */
+    --poster-width: 100%; /* ポスターの横幅（ここで調整可能: 例 100%, 800px, contain） */
+    --poster-height: auto; /* ポスターの縦幅 */
+
+    /* ヒーローテキストやコンポーネント背景の変数化 */
+    --hero-text-color: #ffffff;
+    --hero-text-shadow: 0 2px 10px rgba(0, 0, 0, 0.9), 0 0 5px #000000, 0 0 15px #000000;
+    --hero-text-shadow-light: 0 2px 10px rgba(0, 0, 0, 0.8), 0 0 5px rgba(0, 0, 0, 0.9);
+    --hero-glitch-shadow: 0 4px 15px rgba(0, 0, 0, 0.8), 0 2px 5px rgba(0, 0, 0, 0.9);
+    --panel-bg: rgba(0, 20, 35, 0.4);
+    --nav-bg: rgba(11, 12, 16, 0.95);
+    --footer-bg: #060608;
+    --scroll-btn-bg: rgba(11, 12, 16, 0.8);
+}
+
+/* --- ライトテーマ設定 --- */
+:root.light-theme {
+    --bg-color: #f7fbff; /* 明るい背景 */
+    --bg-grid: rgba(0, 128, 255, 0.05); /* うっすら青いグリッド */
+    --text-main: #000000; /* 暗い文字 */
+    --text-highlight: #000000; /* より暗い見出し */
+    --accent: #0077aa; /* 落ち着いた青 */
+    --accent-dark: #004466;
+
+    --panel-bg: rgba(255, 255, 255, 0.8);
+    --nav-bg: rgba(255, 255, 255, 0.95);
+    --footer-bg: #e6ebf0;
+    --scroll-btn-bg: rgba(255, 255, 255, 0.9);
+}
+
+html {
+    width: 100%;
+    overflow-x: hidden; /* スマホで横揺れ（横スクロール）するのを防ぐ */
+}
+
+body {
+    font-family: 'Montserrat', 'Noto Sans JP', sans-serif;
+    margin: 0;
+    width: 100%;
+    color: var(--text-main);
+    background-color: var(--bg-color);
+    background-image: 
+        linear-gradient(var(--bg-grid) 1px, transparent 1px),
+        linear-gradient(90deg, var(--bg-grid) 1px, transparent 1px);
+    background-size: 40px 40px; /* グリッドの大きさ */
+    background-attachment: fixed;
+    line-height: 1.8;
+    overflow-x: hidden;
+}
+
+/* ==================
+   Theme Toggle Button
+   ================== */
+.theme-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: var(--nav-bg);
+    border: 1px solid var(--event-border);
+    color: var(--text-highlight);
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    z-index: 1000;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+}
+
+.theme-toggle:hover {
+    transform: scale(1.1);
+}
+
+.theme-toggle svg {
+    transition: stroke 0.3s;
+}
+
+/* Typography & Layout */
+h1, h2, h3 {
+    margin: 0;
+    color: var(--text-highlight);
+    font-weight: 900;
+}
+
+a {
+  color: var(--accent); /* 好きな色に変更 */
+}
+
+.hero {
+    position: relative;
+    height: 100vh;
+    background-image: url(../images/Poster_CL.jpg); /* ポスター画像1 */
+    background-size: var(--poster-width) var(--poster-height); /* 上の設定(root)でサイズ変更可能 */
+    background-position: center;
+    background-repeat: no-repeat; /* 画像の繰り返しを無効化 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    overflow: hidden;
+    
+    /* 登場時だけフェードインするアニメーション */
+    opacity: 0;
+    animation: heroFadeIn 2s ease-out forwards;
+}
+
+@keyframes heroFadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.hero-content {
+    padding: 3rem 6rem;
+    margin-top: 35vh; /* テキスト全体を少しだけ下寄りに配置 */
+    z-index: 10;
+}
+
+/* Glitch Effect on Title / ネオンのグロー */
+.subtitle-top {
+    font-size: 36px;
+    color: var(--hero-text-color);
+    font-family: 'Noto Serif JP', serif;
+    letter-spacing: 5px;
+    margin-bottom: 0; /* 間隔を狭めるため変更 */
+    font-weight: 700;
+    text-shadow: var(--hero-text-shadow-light);
+    transition: color 0.3s, text-shadow 0.3s;
+}
+
+.glitch {
+    font-size: 87px;
+    margin: 0;
+    position: relative;
+    color: var(--hero-text-color);
+    font-family: 'Noto Sans JP', sans-serif;
+    letter-spacing: 10px;
+    font-weight: 900;
+    line-height: 1.1; /* 余分な空白を削る */
+    text-shadow: var(--hero-glitch-shadow);
+    transition: color 0.3s, text-shadow 0.3s;
+}
+
+/* 少しサイバーパンク/デジタルなサブタイトル */
+.subtitle-bottom {
+    margin-top: 0.5rem; /* 間隔を狭めるため変更 */
+    color: var(--hero-text-color);
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-shadow: var(--hero-text-shadow-light);
+    transition: color 0.3s, text-shadow 0.3s;
+}
+
+.subtitle-bottom .text-s {
+    font-size: 17px;
+    color: var(--hero-text-color);
+    transition: color 0.3s;
+}
+
+.subtitle-bottom .text-m {
+    font-size: 22px;
+    color: var(--hero-text-color);
+    transition: color 0.3s;
+}
+
+/* イベント情報（日時・会場など） */
+.event-info {
+    margin-top: 2.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--event-border);
+    text-align: left;
+    display: inline-block;
+    color: var(--hero-text-color);
+    font-family: 'Noto Sans JP', sans-serif;
+    text-shadow: var(--hero-text-shadow);
+    line-height: 1.4;
+    transition: color 0.3s, text-shadow 0.3s, border-color 0.3s;
+}
+
+.event-info p {
+    margin: 0 0 10px 0;
+    font-size: 16px;
+    letter-spacing: 1px;
+}
+
+.event-info strong {
+    color: var(--accent); /* タイトル部分をネオンブルーに */
+}
+
+.event-time-sub {
+    font-size: 13px;
+    display: inline-block;
+    margin-left: 4.5em; /* 日時の後に合わせるためのインデント */
+    opacity: 0.9;
+}
+
+.event-venue-sub {
+    font-size: 14px;
+    opacity: 0.9;
+}
+
+/* Scroll indicator / Back to Top button */
+.scroll-indicator {
+    position: fixed; /* スクロールに追従させるため absolute から fixed に変更 */
+    bottom: 40px;
+    right: 40px;
+    z-index: 90; /* 他の要素より上に表示 */
+    color: var(--text-main);
+    font-size: 0.9rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    opacity: 0.7;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.scroll-indicator.is-totop {
+    background-color: var(--scroll-btn-bg);
+    border: 1px solid var(--accent);
+    border-radius: 50px; /* 丸みをつけてボタンらしくする */
+    padding: 12px 131px;
+    color: var(--accent);
+    opacity: 0.9;
+    gap: 0;
+    font-weight: 700;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* 浮いているような影 */
+}
+
+.scroll-indicator:focus {
+    outline: none;
+}
+
+
+.scroll-indicator.is-totop:hover {
+    background-color: var(--accent);
+    color: var(--bg-color);
+    transform: translateY(-5px); /* ホバー時に少し浮くアニメーション */
+}
+
+.scroll-indicator.is-totop::after {
+    display: none; /* 上に戻るボタンの時はスクロール用の縦線を非表示 */
+}
+
+.scroll-indicator::after {
+    content: '';
+    width: 2px;
+    height: 30px;
+    background-color: var(--accent);
+    animation: scroll-line 2s infinite ease-in-out;
+}
+
+@keyframes scroll-line {
+    0% { transform: scaleY(0); transform-origin: top; }
+    50% { transform: scaleY(1); transform-origin: top; }
+    50.1% { transform: scaleY(1); transform-origin: bottom; }
+    100% { transform: scaleY(0); transform-origin: bottom; }
+}
+
+main {
+    position: relative;
+    background-color: var(--bg-color);
+    padding: 6rem 2rem;
+    z-index: 20;
+}
+
+.details-section {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.details-section > div {
+    margin-bottom: 5rem;
+    width: 100%;
+}
+
+/* 画像やiframe(Googleマップなど)がスマホの横幅をはみ出すのを防ぐ */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* デフォルト（スマホ） */
+iframe {
+    max-width: 600px;
+    height: 400px;
+    width: 100%;
+}
+
+/* PC用（画面幅が768px以上など） */
+@media (min-width: 768px) {
+    iframe {
+        max-width: 500px;
+        height: 500px;
+    }
+}
+
+h2 {
+    font-size: 3.5rem;
+    margin-bottom: 2rem;
+    position: relative;
+    display: inline-block;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+}
+
+
+
+h2::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 60px;
+    height: 3px;
+    background: var(--text-highlight);
+    box-shadow: 0 0 15px var(--accent), 0 0 5px var(--accent-dark); /* 線自体にホログラムの光沢 */
+    transition: width 0.4s ease;
+}
+
+h2:hover::after {
+    width: 100%;
+}
+
+/* About Section Styles */
+.about-layout {
+    display: flex;
+    align-items: flex-start; /* 縦中央(center)だと展開時に画像が動くため、上揃えに固定する */
+    justify-content: center;
+    gap: 3rem;
+    margin-top: 2rem;
+    text-align: left;
+}
+
+.about-image {
+    flex: 0 0 250px; /* 画像エリアの幅を固定 */
+    display: flex;
+    justify-content: center;
+    margin-top: 5rem; /* テキスト全体の「中央付近」に見える位置まで、固定の余白で押し下げる */
+}
+
+.about-text {
+    flex: 1; /* 残りのスペースを利用 */
+}
+
+.about-lead {
+    font-size: 1.2rem;
+    color: var(--text-highlight);
+    margin-bottom: 2rem;
+    transition: color 0.3s;
+    line-height: 1.8;
+}
+
+.about-lead strong {
+    color: var(--accent);
+}
+
+.ishiguro-image {
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid var(--accent);
+    box-shadow: 0 0 20px rgba(0, 240, 255, 0.3);
+}
+
+.speaker-text {
+    text-align: left;
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px dashed rgba(0, 240, 255, 0.2);
+}
+
+.speaker-intro, .speaker-outro {
+    font-size: 1rem;
+    margin: 0;
+    opacity: 0.8;
+}
+
+.speaker-name {
+    font-size: 1.8rem;
+    color: var(--accent);
+    margin: 0.5rem 0;
+    letter-spacing: 2px;
+}
+
+.speaker-details {
+    margin-top: 1rem;
+}
+
+.speaker-details summary {
+    cursor: pointer;
+    font-size: 0.95rem;
+    color: var(--accent);
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--accent);
+    border-radius: 5px;
+    background: rgba(0, 240, 255, 0.05);
+    transition: all 0.3s ease;
+    list-style: none; /* デフォルトの矢印を消す */
+}
+
+/* Chrome向け・デフォルトの矢印を消す */
+.speaker-details summary::-webkit-details-marker {
+    display: none;
+}
+
+.speaker-details summary:hover {
+    background: var(--accent);
+    color: var(--bg-color);
+}
+
+.speaker-details summary::before {
+    content: '▶';
+    font-size: 0.8rem;
+    transition: transform 0.3s ease;
+}
+
+/* 開いたときの矢印の向き */
+.speaker-details[open] summary::before {
+    transform: rotate(90deg);
+}
+
+.speaker-bio {
+    margin-top: 1rem;
+    padding: 1rem;
+    font-size: 0.95rem;
+    background: var(--panel-bg);
+    border-left: 3px solid var(--accent);
+    border-radius: 0 5px 5px 0;
+    line-height: 1.8;
+    color: var(--text-main);
+    animation: fadeIn 0.4s ease-in-out;
+}
+
+.speaker-bio p {
+    margin: 0;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.about-desc {
+    font-size: 1.1rem;
+    color: var(--text-main);
+    transition: color 0.3s;
+    line-height: 1.8;
+}
+
+/* Program Section Styles */
+.program-list {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+}
+
+.program-item {
+    display: flex;
+    flex-wrap: wrap;
+    background: var(--panel-bg);
+    border-left: 4px solid var(--accent);
+    padding: 1.5rem;
+    border-radius: 0 8px 8px 0;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.program-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 15px rgba(0, 240, 255, 0.1);
+}
+
+.program-time {
+    font-weight: 700;
+    color: var(--accent);
+    font-size: 1.2rem;
+    width: 140px;
+    flex-shrink: 0;
+    margin-bottom: 1rem;
+}
+
+.program-content {
+    flex-grow: 1;
+    color: var(--text-main);
+    line-height: 1.6;
+}
+
+.program-content p {
+    margin-top: 0;
+    margin-bottom: 1.2rem;
+}
+
+.program-content p:last-child {
+    margin-bottom: 0;
+}
+
+.program-content strong {
+    color: var(--text-highlight);
+    font-size: 1.1rem;
+}
+
+.info-list {
+    list-style: none;
+    padding: 2rem;
+    background: var(--panel-bg); /* 未来的な暗いパネル */
+    border: 1px solid rgba(0, 240, 255, 0.15); /* ネオン枠 */
+    border-radius: 12px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
+    transition: background-color 0.3s;
+}
+
+.info-list li {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid rgba(0, 240, 255, 0.1);
+    padding: 1.5rem 1rem;
+    transition: all 0.3s ease;
+}
+
+.info-list li:hover {
+    background-color: rgba(0, 240, 255, 0.05); /* サイバーブルーのハイライト */
+    padding-left: 2rem; /* スライドして強調 */
+    border-color: var(--accent);
+}
+
+.info-list .label {
+    width: 120px;
+    font-weight: 700;
+    color: var(--text-highlight);
+    font-size: 1.1rem;
+}
+
+.info-list .value {
+    font-size: 1.1rem;
+    word-break: break-word; /* 長いテキスト(URLなど)が枠をはみ出すのを防ぐ */
+}
+
+/* Registration Section Styles */
+.registration-content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.registration-period {
+    font-size: 1.2rem;
+    color: var(--accent);
+    margin-bottom: 1rem;
+}
+
+.registration-desc {
+    margin-bottom: 2rem;
+    line-height: 1.6;
+}
+
+.registration-methods {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.registration-method {
+    flex: 1;
+    background: var(--panel-bg);
+    padding: 2rem;
+    border-radius: 8px;
+    border-top: 4px solid var(--accent);
+    text-align: center;
+}
+
+.registration-method h3 {
+    margin-top: 0;
+    color: var(--text-main);
+    font-size: 1.3rem;
+}
+
+.registration-method p {
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+}
+
+.btn-primary, .btn-secondary {
+    display: inline-block;
+    padding: 0.8rem 1.5rem;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.3s;
+}
+
+.btn-primary {
+    background: var(--accent);
+    color: var(--bg-color);
+}
+
+.btn-primary:hover {
+    background: #fff;
+    color: var(--bg-color);
+}
+
+.btn-secondary {
+    background: transparent;
+    border: 1px solid var(--text-main);
+    color: var(--text-main);
+}
+
+.btn-secondary:hover {
+    background: var(--text-main);
+    color: var(--bg-color);
+}
+
+.registration-notes {
+    background: rgba(0, 0, 0, 0.2);
+    padding: 1.5rem;
+    border-radius: 8px;
+    font-size: 0.9rem;
+}
+
+.light-theme .registration-notes {
+    background: rgba(0, 0, 0, 0.05);
+}
+
+.registration-notes h3 {
+    margin-top: 0;
+    font-size: 1.1rem;
+    border-bottom: 1px solid var(--accent);
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.registration-notes h3 span {
+    font-size: 0.8rem;
+    color: #ff6b6b;
+    font-weight: normal;
+}
+
+.registration-notes ul {
+    margin: 0;
+    padding-left: 1.5rem;
+}
+
+.registration-notes li {
+    margin-bottom: 0.5rem;
+    line-height: 1.6;
+}
+
+footer {
+    text-align: center;
+    padding: 3rem;
+    background-color: var(--footer-bg);
+    color: var(--text-main);
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+    transition: background-color 0.3s;
+}
+
+/* ----- Animation Classes (JS triggers these) ----- */
+.animate-on-scroll {
+    opacity: 0;
+    transition: all 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.fade-up {
+    transform: translateY(40px);
+}
+
+.fade-left {
+    transform: translateX(-40px);
+}
+
+/* Applied by JS Intersect.observer */
+.animate-on-scroll.is-visible {
+    opacity: 1;
+    transform: translate(0) scale(1);
+}
+
+/* Stagger delays */
+.delay-1 { transition-delay: 0.2s; }
+.delay-2 { transition-delay: 0.4s; }
+
+/* ----- Top Navigation (Tabs) ----- */
+.top-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: var(--nav-bg);
+    backdrop-filter: blur(10px);
+    z-index: 100;
+    padding: 1rem 0;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    transform: translateY(-100%);
+    transition: transform 0.4s ease, background-color 0.3s;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.top-nav img {
+    width: 200px;
+    height: 70px;
+}
+
+.top-nav.is-scrolled {
+    transform: translateY(0); /* スクロールすると上部から降りてくる */
+}
+
+.top-nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+}
+
+.top-nav ul li a {
+    color: var(--text-main);
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    padding-bottom: 5px;
+    border-bottom: 2px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.top-nav ul li a:hover {
+    color: var(--accent);
+    border-bottom: 2px solid var(--accent); /* ホバー時にタブっぽい下線が付く */
+}
+
+
+/* スマホ用 */
+@media (max-width: 768px) {
+
+    .top-nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;          /* ← これ重要 */
+        height: 100vh;        /* ← 画面いっぱい */
+        background: var(--nav-bg);
+        
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        transform: translateY(-100%);
+        opacity: 0;
+        transition: 0.3s;
+        pointer-events: none; /* 非表示のときはクリックを無効化 */
+    }
+
+    .top-nav.active {
+        transform: translateY(0);
+        opacity: 1;
+        pointer-events: auto; /* 表示のときはクリックを有効化 */
+    }
+
+    .top-nav ul {
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
+    }
+
+    .top-nav ul li a {
+        font-size: 1.5rem;   /* 見やすく */
+    }
+    .apply-btn {
+        right: 20px;
+        bottom: 90px; /* 少し近づける */
+        padding: 10px 14px;
+        font-size: 0.9rem;
+    }
+}
+
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    :root {
+        --poster-width: 300%; /* スマホなどの画面幅ではポスターを大きく表示 */
+    }
+    .hero-content { padding: 2rem 1rem; } 
+    .subtitle-top { font-size: 18px; letter-spacing: 2px; margin-bottom: 0; }
+    .glitch { font-size: 42px; letter-spacing: 3px; margin: 0; line-height: 1.1; }
+    .subtitle-bottom { margin-top: 0.2rem; }
+    .subtitle-bottom .text-s { font-size: 12px; }
+    .subtitle-bottom .text-m { font-size: 16px; }
+    
+    .event-info { margin-top: 1.5rem; padding-top: 1rem; width: 100%; text-align: center; }
+    .event-info p { font-size: 14px; text-align: center; }
+    .event-time-sub { margin-left: 0; font-size: 12px; display: block; }
+    .event-venue-sub { display: block; margin-top: 0.2rem; font-size: 12px; }
+
+    main { padding: 4rem 1rem; }
+    .details-section { text-align: center; }
+
+    h2 { font-size: 2.2rem; }
+    
+    .about-layout { flex-direction: column; gap: 2rem; align-items: center; text-align: center; }
+    .about-image { flex: 0 0 auto; margin-top: 0; order: 2; margin-bottom: -1rem; }
+    .about-text { display: contents; }
+    .about-lead { font-size: 1.1rem; text-align: center; order: 1; }
+    .speaker-text { text-align: center; order: 3; }
+    .about-desc { text-align: center; order: 4; }
+    .speaker-name { font-size: 1.5rem; }
+    .speaker-details { text-align: center; }
+    .speaker-bio { text-align: left; }
+
+    .program-item { flex-direction: column; padding: 1rem; align-items: center; text-align: center; }
+    .program-time { width: auto; margin-bottom: 0.5rem; }
+    .program-content { width: 100%; }
+
+    .registration-methods { flex-direction: column; gap: 1rem; }
+    .registration-notes ul { padding-left: 1rem; }
+
+    .info-list { padding: 1.5rem 1rem; text-align: center; } /* 余白縮小 */
+    .info-list li { flex-direction: column; align-items: center; gap: 0.5rem; padding-left: 0; }
+    .info-list li:hover { padding-left: 0; }
+    .info-list .label { width: auto; color: var(--accent); }
+    
+    .top-nav ul { gap: 0.3rem; }
+    .top-nav ul li a { font-size: 0.9rem; }
+    .scroll-indicator { right: 20px; }
+}
